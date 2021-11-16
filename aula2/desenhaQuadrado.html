@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+
+<body>
+
+    <!-- a tag canvas é nada mais que um espaço onde podemos desenhar elementos específicos, formas geometricas e imagens,
+    por exemplo, através de JavaScript(geralmente) támbem podemos usar CSS para a tag  a-->
+    <canvas width="600" height="400"></canvas>
+
+</body>
+
+
+<script>
+    var tela = document.querySelector('canvas');
+    var pincel =  tela.getContext('2d');
+
+    function desenhaQuadrado(x, y, cor) {
+        pincel.fillStyle = cor;
+        pincel.fillRect(x, y, 50, 50);
+        pincel.fillStroke = 'black';
+        pincel.strokeRect(x, y, 50, 50);
+    }
+
+    desenhaQuadrado(0, 50, 'black');
+    desenhaQuadrado(0, 100, 'yellow');
+    desenhaQuadrado(0, 150, 'red');
+
+    var x = 0;
+
+    /* essas duas formas do código vão dar o mesmo resultado, abaixo deixarei o for para visualizar o que foi feito
+
+    while(x < 600) {
+        desenhaQuadrado(x, 0, 'orange');
+        x = x + 50;
+    }
+
+    for(var x = 0; x < 600; x = x +50){
+        desenhaQuadrado(x, 0, 'orange');
+    }
+
+    */
+
+    for(var x = 0; x < 600; x = x +50){
+        desenhaQuadrado(x, 0, 'orange');
+    }
+</script>
+</html>
