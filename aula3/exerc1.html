@@ -1,0 +1,45 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+    //EXERCÍCIO: FAÇA O CIRCULO AUMENTAR DE TAMANHO A CADA CLICK SEGURANDO O SHIFT
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'gray';
+    pincel.fillRect(0, 0, 600, 400);
+
+    // aqui eu deixei a variavel do raio fora da função, pois se ficasse  dentro da função desenhaCirculo
+    // ela sempre iria ficar no tamanho de 10
+
+    var raio = 10;
+
+    function desenhaCirculo(evento) {
+
+        var x = evento.pageX - tela.offsetLeft;
+        var y = evento.pageY - tela.offsetTop;
+
+        console.log(x + ',' + y);
+
+        // coloquei limite até o tamanho 50 para o circulo, e adicionei a tecla ALT para diminuir o circulo
+        if (evento.shiftKey && evento.altKey) {
+
+        alert('Só aperte uma tecla por vez, por favor!');
+
+        } else if(evento.shiftKey && raio + 10 <= 50) {
+            raio = raio + 10;
+
+        } else if(evento.altKey && raio - 5 >= 10) {
+            raio = raio - 5;
+
+        }
+
+        pincel.fillStyle = 'blue';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * 3.14);
+        pincel.fill();
+    }
+
+    tela.onclick = desenhaCirculo;
+
+</script>
